@@ -32,9 +32,18 @@ describe('meme routes', () => {
         expect(res.body).toEqual(memes);
       });
   });
+
+  it('gets a meme by id', async() => {
+    const meme = await getMeme();
+
+    return request(app) 
+      .get(`/api/v1/memes/${meme._id}`)
+      .then(res => {
+        expect(res.body).toEqual(meme);
+      });
+  });
 });
-// POST /api/v1/memes to create a meme
-// GET /api/v1/memes to get all memes
+
 // GET /api/v1/memes/:id to get a meme by id
 // PUT /api/v1/memes/:id to update a meme
 // DELETE /api/v1/memes/:id to delete a meme
