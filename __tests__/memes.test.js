@@ -22,6 +22,16 @@ describe('meme routes', () => {
         });
       });
   });
+
+  it('gets all memes', async() => {
+    const memes = await getMemes();
+
+    return request(app) 
+      .get('/api/v1/memes')
+      .then(res => {
+        expect(res.body).toEqual(memes);
+      });
+  });
 });
 // POST /api/v1/memes to create a meme
 // GET /api/v1/memes to get all memes
