@@ -6,7 +6,7 @@ describe('meme routes', () => {
   it('creates a meme', async() => {
     
     return request(app) 
-      .post('api/v1/memes')
+      .post('/api/v1/memes')
       .send({
         top: 'test top',
         image: 'testingimage@thistest.com',
