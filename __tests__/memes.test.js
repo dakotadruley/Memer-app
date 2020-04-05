@@ -42,8 +42,23 @@ describe('meme routes', () => {
         expect(res.body).toEqual(meme);
       });
   });
+
+  it('updates a meme', async() => {
+    const meme = await getMeme();
+
+    return request(app)
+      .patch(`/api/v1/memes/${meme._id}`)
+      .send({ image: 'https://media.giphy.com/media/eYilisUwipOEM/giphy.gif' })
+      .then(res => {
+        expect(res.body).toEqual({
+          ...meme,
+          image: 'https://media.giphy.com/media/eYilisUwipOEM/giphy.gif'
+        });
+      });
+  });
 });
 
-// GET /api/v1/memes/:id to get a meme by id
+
+
 // PUT /api/v1/memes/:id to update a meme
 // DELETE /api/v1/memes/:id to delete a meme
