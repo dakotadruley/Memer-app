@@ -1,20 +1,11 @@
-require('dotenv').config();
+const { getMeme, getMemes } = require('../db/data-helpers');
 
-const request = require('supertest');
-const app = require('../lib/app');
-const connect = require('../lib/utils/connect');
-const mongoose = require('mongoose');
 
-describe('app routes', () => {
-  beforeAll(() => {
-    connect();
-  });
 
-  beforeEach(() => {
-    return mongoose.connection.dropDatabase();
-  });
 
-  afterAll(() => {
-    return mongoose.connection.close();
-  });
-});
+
+// POST /api/v1/memes to create a meme
+// GET /api/v1/memes to get all memes
+// GET /api/v1/memes/:id to get a meme by id
+// PUT /api/v1/memes/:id to update a meme
+// DELETE /api/v1/memes/:id to delete a meme
